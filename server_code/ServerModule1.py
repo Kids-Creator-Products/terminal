@@ -18,12 +18,13 @@ def term(**x):
   for k in x:
     y.append(x[k])
   c="\n".join(y)
+  print(c)
   r=os.popen(c)
-  while r.read()=="":
-    pass
-  x=False
+  time.sleep(0.2)
   new=r.read()
-  old=""
+  print(new)
+  return new
+  """
   i=0
   while not (x or i>5):
     i+=1
@@ -34,4 +35,4 @@ def term(**x):
     x=True
   print(r.read())
   o=r.read()
-  return o
+  return o"""
