@@ -24,15 +24,3 @@ def term(**x):
   new=r.read()
   print(new)
   return new
-  """
-  i=0
-  while not (x or i>5):
-    i+=1
-    old=new
-    new=r.read()
-    x=(old==new)
-    time.sleep(1)
-    x=True
-  print(r.read())
-  o=r.read()
-  return o"""
