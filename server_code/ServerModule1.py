@@ -30,7 +30,8 @@ def term(**x):
     old=new
     new=r.read()
     x=(old==new)
-    time.sleep(3)
+    time.sleep(1)
+    x=True
   print(r.read())
   o=r.read()
   return o
