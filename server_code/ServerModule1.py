@@ -13,11 +13,11 @@ import os,time
 #   return 42
 #
 @anvil.server.http_endpoint("/term")
-def term(x):
+def term(**x):
   y=[]
   for k in x:
     y.append(x[k])
-  c=y.join("\n")
+  c="\n".join(y)
   r=os.popen(c)
   while r.read()=="":
     pass
