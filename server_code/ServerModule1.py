@@ -20,7 +20,7 @@ def term(**x):
   c="\n".join(y)
   print(c)
   r=os.popen(c)
-  time.sleep(0.2)
+  time.sleep(0.8)
   new=r.read()
   print(new)
   return new
