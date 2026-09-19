@@ -7,4 +7,5 @@ unique_ids:
   modules:
     Layouts: FZ5ALKXDXTRWIFPAI5HQLQKIB6N4V5IP
   scripts: {}
-  server_modules: {}
+  server_modules:
+    ServerModule1: '178984827628097979735157.12921'
