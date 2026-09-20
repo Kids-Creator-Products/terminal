@@ -20,7 +20,24 @@ def term(**x):
   c="\n".join(y)
   print(c)
   r=os.popen(c)
-  time.sleep(0.8)
+  time.sleep(5)
   new=r.read()
   print(new)
-  return new
+  response = anvil.server.HttpResponse(200, new)
+  response.headers['ContentType']="text/plain"
+  return response
+
+@anvil.server.route("/term")
+def term2(**x):
+  y=[]
+  for k in x:
+    y.append(x[k])
+  c="\n".join(y)
+  print(c)
+  r=os.popen(c)
+  time.sleep(5)
+  new=r.read()
+  print(new)
+  response = anvil.server.HttpResponse(200, new)
+  response.headers['ContentType']="text/plain"
+  return response
