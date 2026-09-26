@@ -43,27 +43,9 @@ def term2(**x):
   c="\n".join(y)
   print(c)
   r=os.popen(c)
-  time.sleep(10)
+  time.sleep(12)
   new=r.read()
   print(new)
   response = anvil.server.HttpResponse(200, new)
   response.headers['ContentType']="text/plain"
   return response
-def ai(x):
-  from ollama import chat
-  from ollama import ChatResponse
-
-  response: ChatResponse = chat(
-    model='llama3',
-    messages=[
-      {
-        'role': 'user',
-        'content': x
-      },
-    ],
-  )
-  return response['message']['content']
-@anvil.server.route("/ask/:x")
-def ask(x):
-  return str(ai(x))
-ai("hi")

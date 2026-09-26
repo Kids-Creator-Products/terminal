@@ -17,8 +17,13 @@ class Form1(Form1Template):
       y="/term?0=echo%20Running"
       ind=1
       for i in x.split("\n"):
-        y=y+"&"+str(ind)+"="+str(i)
+        y=y+"&"+str(ind)+"="+anvil.http.url_encode(str(i))
         ind+=1
       return y
-    anvil.js.window.open(anvil.server.get_app_origin().strip("/")+args(x),"about:blank")
+    uri=anvil.server.get_app_origin().strip("/")+args(x)
+    print(uri)
+    r=anvil.http.request(uri)
+    out=r.get_bytes().decode("utf-8")
+    self.rich_text_1.content+="\n<RUN>\n"+out
+    #anvil.js.window.open(uri,"about:blank")
     
