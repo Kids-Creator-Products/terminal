@@ -9,7 +9,7 @@ import io
 import numpy as np
 import onnxruntime as ort
 from PIL import Image
-from transformers import TrOCRProcessor
+#from import TrOCRProcessor
 import anvil.media
 """os.system("curl -fsSL https://ollama.com/install.sh | sh")
 os.system("mkdir -p $HOME/.local/bin && curl -L https://ollama.com/download/ollama-linux-amd64.tar.zst | tar --strip-components=1 -xf - -C $HOME/.local/bin bin/ollama")
@@ -47,7 +47,10 @@ def term(**x):
 def term2(**x):
   y=[]
   for k in x:
-    y.append(x[k])
+    try:
+      y.append(x[k])
+    except:
+      pass
   c="\n".join(y)
   print(c)
   r=os.popen(c)
@@ -58,7 +61,7 @@ def term2(**x):
   response.headers['ContentType']="text/plain"
   return response
 
-
+"""
 # 1. Initialize the processor and ONNX sessions once globally
 # Note: TrOCRProcessor handles tokenizing and image feature extraction
 PROCESSOR = TrOCRProcessor.from_pretrained("microsoft/trocr-base-printed")
@@ -71,11 +74,7 @@ ENCODER_SESS = ort.InferenceSession(ENCODER_PATH, providers=['CPUExecutionProvid
 DECODER_SESS = ort.InferenceSession(DECODER_PATH, providers=['CPUExecutionProvider'])
 
 @anvil.server.callable
-def perform_ocr(image_media):
-  """
-    Accepts an uploaded Anvil Media object (image), processes it,
-    and runs TrOCR natively via onnxruntime without Uplink.
-    """
+def perform_ocr
   # Convert Anvil Media bytes to PIL Image
   img_bytes = image_media.get_bytes()
   image = Image.open(io.BytesIO(img_bytes)).convert("RGB")
@@ -119,3 +118,4 @@ def perform_ocr(image_media):
     # Decode the accumulated token IDs back into readable text
   text = PROCESSOR.decode(generated_tokens, skip_special_tokens=True)
   return text.strip()
+"""

@@ -20,7 +20,7 @@ class Form1(Form1Template):
       y="/term?0=echo%20Running"
       ind=1
       for i in x.split("\n"):
-        y=y+"&"+str(ind)+"="+anvil.http.url_encode(str(i))
+        y=y+"&"+str(ind)+"="+str(i)
         ind+=1
       return y
     uri=anvil.server.get_app_origin().strip("/")+args(x)
